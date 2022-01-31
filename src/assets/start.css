@@ -1,0 +1,51 @@
+main.not-logged-in {
+  display: grid;
+min-width: 312px;
+  border-radius: 40px;
+  background: rgb(255, 255, 255);
+  place-items: center;
+  grid-template-rows: 100px 1fr;
+  padding: 2rem;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+main.not-logged-in.start,  main.not-logged-in.login{
+gap: 4rem;
+}
+main.sign-up.not-logged-in {
+  grid-template-rows: auto;
+}
+@import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=Short+Stack&display=swap");
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#root {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+
+  background: linear-gradient(45deg, #fd267a, #ff6036);
+}
+section.user-enter {
+  display: grid;
+  gap: 1rem;
+}
+h1 {
+  font-family: "Fuzzy Bubbles", cursive;
+  font-family: "Short Stack", cursive;
+  font-size: 3rem;
+  letter-spacing: 3px;
+  background-color: white;
+  background-image: -webkit-linear-gradient(45deg, #fd267a, #ff6036);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

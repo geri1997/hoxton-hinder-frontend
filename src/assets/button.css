@@ -1,0 +1,25 @@
+
+button.btn {
+  border-radius: 30px;
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: none;
+  outline: none;
+  font-family: "Gowun Dodum", sans-serif;
+}
+button.btn:hover{
+  background: linear-gradient(45deg, #fc5696, #ff805d);
+   color: white;
+   transition: all 0.7s ease;
+}
+button.user-enter {
+  background-color: white;
+  background-image: -webkit-linear-gradient(45deg, #fd267a, #ff6036);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

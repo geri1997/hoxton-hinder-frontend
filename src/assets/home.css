@@ -1,0 +1,87 @@
+main.home {
+  width: 450px;
+  height: 90vh;
+  display: grid;
+  padding: 1.5rem;
+  padding-bottom: 0.5rem;
+  background-color: white;
+  border-radius: 20px;
+  grid-template-rows: 60px 1fr 60px;
+}
+section.image-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+}
+h1.home-h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+section.image-container img {
+  border-radius: 20px;
+}
+section.home-btns {
+  display: grid;
+  grid-auto-flow: column;
+  padding: 0.5rem;
+  padding-top: 1rem;
+  gap: 2rem;
+  place-content: center;
+}
+h2.photo-name {
+  position: absolute;
+  color: white;
+  font-weight: 600;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+}
+span.age {
+  font-size: 1.2rem;
+}
+
+section.users {
+  overflow: hidden;
+  overflow-y: scroll;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  display: grid;
+  grid-template-rows: 100%;
+  gap: 1rem;
+}
+section.users-description {
+  display: grid;
+  gap: 0.5rem;
+}
+.hinder-btns {
+  background-color: rgb(248, 244, 244);
+  border-radius: 30px;
+  border: none;
+  display: grid;
+  place-items: center;
+  height: 50px;
+  width: 50px;
+  padding: 0.7rem;
+  position: relative;
+}
+
+.hinder-btns:hover {
+  transform: scale(1.2, 1.2);
+  background: linear-gradient(45deg, #fd267883, #ff623670);
+  transition-duration: 0.5s;
+}
+
+
+.onclick-btn{
+    transition: ease-in-out ;
+    transition-duration: 1s;
+}
+.onclick-btn.active{
+    transform: scale(2.3);
+    transition: ease-in-out ;
+    
+    transition-duration: 1s;
+}
