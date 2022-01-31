@@ -1,6 +1,6 @@
 import create from "zustand";
 
-export const useStore = create((set,get) => ({
+export const useStore = create((set, get) => ({
   currentUser: null,
   userAlreadyExists: false,
   wrongInfo: false,
@@ -38,12 +38,12 @@ export const useStore = create((set,get) => ({
       }, 1000);
     }
   },
-  setAllUsers: (users) => set((allUsers) => ({allUsers : users})),
+  setAllUsers: (users) => set((allUsers) => ({ allUsers: users })),
   nextUser: () => {
-    if (get().displayedUserIndex < 9) {
-      set((state) => {
-        get().displayedUserIndex + 1;
-      });
+    if (get().displayedUserIndex < get().allUsers.length-1) {
+      set((state) => ({
+        displayedUserIndex: get().displayedUserIndex + 1,
+      }));
     } else {
       set((state) => ({ displayedUserIndex: 0 }));
     }

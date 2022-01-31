@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import HomeBtn from "../Components/HomeBtn";
 import { useStore } from "../Store/store";
 
 const Profile = () => {
@@ -38,23 +39,21 @@ const Profile = () => {
         </section>
       </section>
       <section className="home-btns">
-        <button onClick={() => navigate("/profile")} className="hinder-btns">
+      <HomeBtn onClick={() => navigate("/profile")}>
           <img
             style={{ height: "28px" }}
             src="/src/assets/images/user.svg"
             alt=""
           />
-        </button>
+        </HomeBtn>
         
-        <button onClick={() => navigate("/home")} className="hinder-btns">
-          {" "}
+        <HomeBtn onClick={() => navigate("/home")}>
           <img src="/src/assets/images/home.svg" alt="" />
-        </button>
+        </HomeBtn>
         
-        <button onClick={() => navigate("/chat")} className="hinder-btns">
-          {" "}
+        <HomeBtn onClick={() => navigate("/chat")}>
           <img src="/src/assets/images/chat.svg" alt="" />
-        </button>
+        </HomeBtn>
       </section>
     </main>
   );
