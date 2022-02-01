@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=Short+Stack&display=swap");
 main.not-logged-in {
   display: grid;
 min-width: 312px;
@@ -16,7 +17,6 @@ gap: 4rem;
 main.sign-up.not-logged-in {
   grid-template-rows: auto;
 }
-@import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=Short+Stack&display=swap");
 
 @keyframes fadeInAnimation {
   0% {

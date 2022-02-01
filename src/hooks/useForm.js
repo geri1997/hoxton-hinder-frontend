@@ -17,7 +17,16 @@ export function useForm(initialData) {
       e.target.name === "dislikes"
     )
       setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    if (e.target.name === "age") {
+      var Bdate = e.target.value;
+      var Bday = +new Date(Bdate);
+
+      setFormData({ ...formData, age: ~~((Date.now() - Bday) / 31557600000) });
+    }
   }
+
+  
 
   function setInterestedIn(gender) {
     setFormData({ ...formData, interestedIn: gender });
