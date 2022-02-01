@@ -21,12 +21,13 @@ const SignUp = () => {
     onBlurHandler,
     stage,
     nextStage,
+    fileUpload
   } = useForm({
     username: "",
     phone: "",
     password: "",
     age: "",
-    gender: "",
+    gender: "male",
     interestedIn: "men",
     photo: "",
     aboutMe: "",
@@ -175,7 +176,7 @@ const SignUp = () => {
             }}
             className="enter sign-up"
           >
-            <label htmlFor="photo">Profile photo (url)</label>
+            <label htmlFor="photo">Profile photo </label>
             <input
               required
               id="photo"
@@ -185,7 +186,8 @@ const SignUp = () => {
               type="text"
               value={formData.photo}
             />
-            <label htmlFor="geder">Gender</label>
+            <input onChange={fileUpload} type="file" id="file-input" name="photo" />
+            <label htmlFor="gender">Gender</label>
             <select required onChange={onChange} name="gender" id="gender">
               <option value="male">Male</option>
               <option value="female">Female</option>

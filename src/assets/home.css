@@ -77,11 +77,11 @@ section.users-description {
 
 .onclick-btn{
     transition: ease-in-out ;
-    transition-duration: 1s;
+    transition-duration: 0.5s;
 }
 .onclick-btn.active{
     transform: scale(2.3);
     transition: ease-in-out ;
     
-    transition-duration: 1s;
+    transition-duration: 0.5s;
 }

@@ -1,4 +1,5 @@
 import create from "zustand";
+import { updateUser } from "../utils/api";
 
 export const useStore = create((set, get) => ({
   currentUser: null,
@@ -35,17 +36,30 @@ export const useStore = create((set, get) => ({
               `img[src="/src/assets/images/${buttonName}.svg"].onclick-btn`
             )
             .classList.remove("active");
-      }, 1000);
+      }, 500);
     }
   },
   setAllUsers: (users) => set((allUsers) => ({ allUsers: users })),
+  likeUser: (id) => {
+    //add the displayed users id to the likedPeople array
+    let currentUserCopy = JSON.parse(JSON.stringify(get().currentUser));
+    currentUserCopy.likedPeople.push(id);
+    updateUser(currentUserCopy);
+    set((state) => ({ currentUser: currentUserCopy }));
+  },
+  dislikeUser: (id) => {
+    //add the displayed users id to the likedPeople array
+    let currentUserCopy = JSON.parse(JSON.stringify(get().currentUser));
+    currentUserCopy.dislikedPeople.push(id);
+    updateUser(currentUserCopy);
+    set((state) => ({ currentUser: currentUserCopy }));
+  },
   nextUser: () => {
-    if (get().displayedUserIndex < get().allUsers.length-1) {
+    //show next user
+    if (get().displayedUserIndex <= get().allUsers.length - 1) {
       set((state) => ({
         displayedUserIndex: get().displayedUserIndex + 1,
       }));
-    } else {
-      set((state) => ({ displayedUserIndex: 0 }));
     }
   },
 }));

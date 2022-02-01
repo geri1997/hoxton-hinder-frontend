@@ -1,84 +1,87 @@
-form.enter{
-    display: grid;
-    gap: 1rem;
-    text-align: center;
-    width: 100%;
+form.enter {
+  display: grid;
+  gap: 1rem;
+  text-align: center;
+  width: 100%;
 }
 
-form.enter label{
-    font-size: 1.2rem;
+form.enter label {
+  font-size: 1.2rem;
 }
 
-form.enter input{
-    height: 3rem;
-    border-radius: 30px;
-    text-indent: 1rem;
-    font-size: 1rem;
+form.enter input {
+  height: 3rem;
+  border-radius: 30px;
+  text-indent: 1rem;
+  font-size: 1rem;
 }
-textarea{
-    text-indent: 1rem;
-    font-size: 1rem;
+textarea {
+  text-indent: 1rem;
+  font-size: 1rem;
 }
-.too-short{
-    color: red;
-    font-size: 1rem;
-}
-
-input.shake{
-    border-color: red;
-    animation: shakes 75ms 7 alternate linear;
-}
-@keyframes shakes{
-    0% {
-        transform: translateX(10px);    }
-    100% {
-        transform: translateX(-10px);
-     }
+.too-short {
+  color: red;
+  font-size: 1rem;
 }
 
-.men-women{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border: 1px solid black;
-    border-radius: 20px;
-    position: relative;
+input.shake {
+  border-color: red;
+  animation: shakes 75ms 7 alternate linear;
 }
-div.men, div.women{
-    border-radius: 20px;
-    font-size: 1.2rem;
-    padding: 0.3rem;
-    cursor: pointer;
-}
-div.select{
-    position: absolute;
-    width: 124px;
-    height: 101%;
-    border-radius: 20px;
-    background: linear-gradient(45deg, #fc5696, #ff805d);
-    transition: 1s;
-    right: 49.8%;
-    top: -0.11px;
+@keyframes shakes {
+  0% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
 }
 
-span.text{
-    z-index: 2;
-    color: black;
-    position: relative;
-    transition: 1s;
-    user-select: none;
+.men-women {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid black;
+  border-radius: 20px;
+  position: relative;
 }
-span.text.selected{
-    z-index: 2;
-    color: white;
-    position: relative;
-    transition: 1s;
+div.men,
+div.women {
+  border-radius: 20px;
+  font-size: 1.2rem;
+  padding: 0.3rem;
+  cursor: pointer;
 }
-.phone-exists{
-    color: red;
-    max-width: 250px;
-    
+div.select {
+  position: absolute;
+  width: 124px;
+  height: 101%;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #fc5696, #ff805d);
+  transition: 1s;
+  right: 49.8%;
+  top: -0.11px;
 }
 
-input#file-input{
-    font-size: 0.81rem;
+span.text {
+  z-index: 2;
+  color: black;
+  position: relative;
+  transition: 1s;
+  user-select: none;
 }
+span.text.selected {
+  z-index: 2;
+  color: white;
+  position: relative;
+  transition: 1s;
+}
+.phone-exists {
+  color: red;
+  max-width: 250px;
+}
+
+input#file-input {
+  font-size: 0.81rem;
+  height: 1.5rem;
+}
+

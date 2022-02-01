@@ -46,7 +46,19 @@ export function signIn(user, setUserInState, setWrongInfo) {
     });
 }
 
-export function fetchUsers(interestedIn){
+export function fetchUsers(interestedIn) {
   //fetch only users of the gender you're interested in
-  return fetch(apiUrl + `?gender=${interestedIn==='men'?'male':'female'}`).then(res=>res.json())
+  return fetch(
+    apiUrl + `?gender=${interestedIn === "men" ? "male" : "female"}`
+  ).then((res) => res.json());
+}
+
+export function updateUser(updatedUser) {
+  fetch(apiUrl + "/" + updatedUser.id, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedUser),
+  });
 }

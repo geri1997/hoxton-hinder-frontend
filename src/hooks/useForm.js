@@ -52,6 +52,25 @@ export function useForm(initialData) {
     }
   }
 
+  function fileUpload() {
+    // @ts-ignore
+    const file = document.querySelector("input[type=file]").files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener(
+      "load",
+      function () {
+        // convert image file to base64 string
+        setFormData({ ...formData, photo: reader.result });
+      },
+      false
+    );
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+
   return {
     formData,
     onChange,
@@ -59,5 +78,6 @@ export function useForm(initialData) {
     onBlurHandler,
     stage,
     nextStage,
+    fileUpload,
   };
 }
