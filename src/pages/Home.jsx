@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../Store/store";
 import "../assets/home.css";
@@ -11,32 +11,38 @@ const Home = () => {
   const animateOnClick = useStore((store) => store.animateButtonOnClick);
   const setAllUsers = useStore((store) => store.setAllUsers);
   const allUsers = useStore((store) => store.allUsers);
-  const displayedUserIndex = useStore((store) => store.displayedUserIndex);
   const likeUser = useStore((store) => store.likeUser);
   const dislikeUser = useStore((store) => store.dislikeUser);
   const isMatch = useStore((store) => store.isMatch);
   const toggleIsMatch = useStore((store) => store.toggleIsMatch);
-  const nextUser = useStore((store) => store.nextUser);
 
   const navigate = useNavigate();
   useEffect(() => {
     !currentUser && navigate("/");
   }, []);
   useEffect(() => {
-    displayedUserIndex === 0 &&
+    
       allUsers.length === 0 &&
       currentUser &&
       fetchUsers(currentUser.interestedIn).then((users) => setAllUsers(users));
   }, [currentUser]);
-  const displayedUser = allUsers[displayedUserIndex];
-  if (displayedUser === null) {
+
+const usersToDisplay=allUsers.filter((user) => {
+  if (currentUser.likedPeople.includes(user.id)||currentUser.dislikedPeople.includes(user.id)) {
+    return false;
+  }
+  return true;
+})
+  const displayedUser = usersToDisplay[0];
+  console.log(displayedUser);
+  if (allUsers.length === 0) {
     return <h1>Loading...</h1>;
   }
 
   return (
     <main className="home">
       <h1 className="home-h1">hinder</h1>
-      {displayedUserIndex <= allUsers.length - 1 ? (
+      {0 <= usersToDisplay.length - 1 ? (
         <section className="users">
           <section className="image-container">
             {isMatch && (
@@ -45,25 +51,32 @@ const Home = () => {
                 <div className="match-btns">
                   <button
                     onClick={(e) => {
+                      
                       toggleIsMatch(false);
                       navigate("/chat");
-                      nextUser()
+                      likeUser(displayedUser.id)
+                      // nextUser();
                     }}
                     className="btn user-enter match"
                   >
                     Chat
                   </button>
-                  <button onClick={(e) => {
+                  <button
+                    onClick={(e) => {
                       toggleIsMatch(false);
-                      nextUser()
-                    }} className="btn user-enter match">
+                      likeUser(displayedUser.id);
+
+                      // nextUser();
+                    }}
+                    className="btn user-enter match"
+                  >
                     Keep Prowling
                   </button>
                 </div>
               </div>
             )}
             <h2 className="photo-name">
-              {capitalise(allUsers[displayedUserIndex].username)}{" "}
+              {capitalise(displayedUser.username)}{" "}
               <span className="age">
                 {" "}
                 {Math.ceil(displayedUser.age).toString()}
@@ -97,7 +110,7 @@ const Home = () => {
           />
         </HomeBtn>
         <HomeBtn
-          disabled={displayedUserIndex === allUsers.length||isMatch}
+          disabled={0 === usersToDisplay.length || isMatch}
           onClick={(e) => {
             animateOnClick("x");
             dislikeUser(displayedUser.id);
@@ -111,9 +124,15 @@ const Home = () => {
         <HomeBtn
           onClick={(e) => {
             animateOnClick("heart");
-            likeUser(displayedUser.id);
+            
+
+            if (displayedUser.likedPeople.includes(currentUser.id)) {
+              toggleIsMatch(true);
+            }else{
+              likeUser(displayedUser.id);
+            }
           }}
-          disabled={displayedUserIndex === allUsers.length||isMatch}
+          disabled={0 === usersToDisplay.length || isMatch}
         >
           <img
             className="onclick-btn"
