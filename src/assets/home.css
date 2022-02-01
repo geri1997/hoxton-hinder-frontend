@@ -74,14 +74,30 @@ section.users-description {
   transition-duration: 0.5s;
 }
 
-
-.onclick-btn{
-    transition: ease-in-out ;
-    transition-duration: 0.5s;
+.onclick-btn {
+  transition: ease-in-out;
+  transition-duration: 0.5s;
 }
-.onclick-btn.active{
-    transform: scale(2.3);
-    transition: ease-in-out ;
-    
-    transition-duration: 0.5s;
+.onclick-btn.active {
+  transform: scale(2.3);
+  transition: ease-in-out;
+
+  transition-duration: 0.5s;
+}
+
+.match-modal {
+  position: absolute;
+  z-index: 3;
+  background-color: white;
+  top: 40%;
+  left: 80px;
+  padding: 1rem;
+  border-radius: 20px;
+  text-align: center;
+}
+.match-btns{
+  display: grid;
+}
+.btn.user-enter.match {
+  font-size: 0.8rem;
 }

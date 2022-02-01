@@ -5,9 +5,10 @@ export const useStore = create((set, get) => ({
   currentUser: null,
   userAlreadyExists: false,
   wrongInfo: false,
-  match:false,
+  isMatch: false,
   displayedUserIndex: 0,
   allUsers: [],
+  toggleIsMatch: (value) => set((state) => ({ isMatch: value })),
   toggleUserAlreadyExists: (value) =>
     set((state) => ({ userAlreadyExists: value })),
   enter: (user) => set((state) => ({ currentUser: user })),
@@ -47,13 +48,17 @@ export const useStore = create((set, get) => ({
     currentUserCopy.likedPeople.push(id);
     updateUser(currentUserCopy);
 
-    // if(get().allUsers[get().displayedUserIndex].likedPeople.includes(get().currentUser.id)){
-    //   set(state=>({match:true}))
-      
-    // }
-    
+    if (
+      get().allUsers[get().displayedUserIndex].likedPeople.includes(
+        get().currentUser.id
+      )
+    ) {
+      get().toggleIsMatch(true);
+    } else {
+      get().nextUser();
+    }
+
     set((state) => ({ currentUser: currentUserCopy }));
-    get().nextUser()
   },
   dislikeUser: (id) => {
     //add the displayed users id to the likedPeople array
@@ -61,8 +66,7 @@ export const useStore = create((set, get) => ({
     currentUserCopy.dislikedPeople.push(id);
     updateUser(currentUserCopy);
     set((state) => ({ currentUser: currentUserCopy }));
-    get().nextUser()
-
+    get().nextUser();
   },
   nextUser: () => {
     //show next user

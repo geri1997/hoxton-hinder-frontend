@@ -14,6 +14,9 @@ const Home = () => {
   const displayedUserIndex = useStore((store) => store.displayedUserIndex);
   const likeUser = useStore((store) => store.likeUser);
   const dislikeUser = useStore((store) => store.dislikeUser);
+  const isMatch = useStore((store) => store.isMatch);
+  const toggleIsMatch = useStore((store) => store.toggleIsMatch);
+  const nextUser = useStore((store) => store.nextUser);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -26,7 +29,7 @@ const Home = () => {
       fetchUsers(currentUser.interestedIn).then((users) => setAllUsers(users));
   }, [currentUser]);
   const displayedUser = allUsers[displayedUserIndex];
-  if (displayedUser===null) {
+  if (displayedUser === null) {
     return <h1>Loading...</h1>;
   }
 
@@ -36,6 +39,29 @@ const Home = () => {
       {displayedUserIndex <= allUsers.length - 1 ? (
         <section className="users">
           <section className="image-container">
+            {isMatch && (
+              <div className="match-modal">
+                <h2>Its a match</h2>
+                <div className="match-btns">
+                  <button
+                    onClick={(e) => {
+                      toggleIsMatch(false);
+                      navigate("/chat");
+                      nextUser()
+                    }}
+                    className="btn user-enter match"
+                  >
+                    Chat
+                  </button>
+                  <button onClick={(e) => {
+                      toggleIsMatch(false);
+                      nextUser()
+                    }} className="btn user-enter match">
+                    Keep Prowling
+                  </button>
+                </div>
+              </div>
+            )}
             <h2 className="photo-name">
               {capitalise(allUsers[displayedUserIndex].username)}{" "}
               <span className="age">
@@ -57,9 +83,8 @@ const Home = () => {
       ) : (
         <section className="users">
           <section className="image-container">
-            <h2 style={{textAlign:'center'}}>No more users</h2>
-            <h2 style={{textAlign:'center'}}>Check again later</h2>
-
+            <h2 style={{ textAlign: "center" }}>No more users</h2>
+            <h2 style={{ textAlign: "center" }}>Check again later</h2>
           </section>
         </section>
       )}
@@ -72,7 +97,7 @@ const Home = () => {
           />
         </HomeBtn>
         <HomeBtn
-        disabled={displayedUserIndex === allUsers.length}
+          disabled={displayedUserIndex === allUsers.length||isMatch}
           onClick={(e) => {
             animateOnClick("x");
             dislikeUser(displayedUser.id);
@@ -88,7 +113,7 @@ const Home = () => {
             animateOnClick("heart");
             likeUser(displayedUser.id);
           }}
-          disabled={displayedUserIndex === allUsers.length}
+          disabled={displayedUserIndex === allUsers.length||isMatch}
         >
           <img
             className="onclick-btn"
