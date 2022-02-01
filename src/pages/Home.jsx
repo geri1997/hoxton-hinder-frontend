@@ -12,7 +12,6 @@ const Home = () => {
   const setAllUsers = useStore((store) => store.setAllUsers);
   const allUsers = useStore((store) => store.allUsers);
   const displayedUserIndex = useStore((store) => store.displayedUserIndex);
-  const nextUser = useStore((store) => store.nextUser);
   const likeUser = useStore((store) => store.likeUser);
   const dislikeUser = useStore((store) => store.dislikeUser);
 
@@ -76,7 +75,6 @@ const Home = () => {
         disabled={displayedUserIndex === allUsers.length}
           onClick={(e) => {
             animateOnClick("x");
-            nextUser();
             dislikeUser(displayedUser.id);
           }}
         >
@@ -88,7 +86,6 @@ const Home = () => {
         <HomeBtn
           onClick={(e) => {
             animateOnClick("heart");
-            nextUser();
             likeUser(displayedUser.id);
           }}
           disabled={displayedUserIndex === allUsers.length}

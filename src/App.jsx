@@ -16,26 +16,14 @@ import SignUp from "./pages/SignUp";
 import Start from "./pages/Start";
 
 function App() {
-
   return (
     <Routes>
       <Route index element={<Start />} />
       <Route path={"/sign-up"} element={<SignUp />} />
-      <Route
-      path={"/login"}
-      element={<Login/>}
-    />
-          <Route path={"/home"} element={<Home />} />
-          <Route path={"/profile"} element={<Profile />} />
-          <Route path={"/chat"} element={<Chat />} />
-
-
-      {/* <Route
-      path={"/login"}
-      element={<Login setUsers={setUsers} setSelectedUser={setSelectedUser} users={users} />}
-    />
-    <Route path={"/logged-in"} element={<MainApp setSelectedUser={setSelectedUser} user={selectedUser} users={users}/>} />
-    <Route path={"/logged-in/:id"} element={<MainApp setSelectedUser={setSelectedUser} user={selectedUser} users={users}/>} /> */}
+      <Route path={"/login"} element={<Login />} />
+      <Route path={"/home"} element={<Home />} />
+      <Route path={"/profile"} element={<Profile />} />
+      <Route path={"/chat"} element={<Chat />} />
     </Routes>
   );
 }

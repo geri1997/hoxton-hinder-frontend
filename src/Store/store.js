@@ -5,6 +5,7 @@ export const useStore = create((set, get) => ({
   currentUser: null,
   userAlreadyExists: false,
   wrongInfo: false,
+  match:false,
   displayedUserIndex: 0,
   allUsers: [],
   toggleUserAlreadyExists: (value) =>
@@ -45,7 +46,14 @@ export const useStore = create((set, get) => ({
     let currentUserCopy = JSON.parse(JSON.stringify(get().currentUser));
     currentUserCopy.likedPeople.push(id);
     updateUser(currentUserCopy);
+
+    // if(get().allUsers[get().displayedUserIndex].likedPeople.includes(get().currentUser.id)){
+    //   set(state=>({match:true}))
+      
+    // }
+    
     set((state) => ({ currentUser: currentUserCopy }));
+    get().nextUser()
   },
   dislikeUser: (id) => {
     //add the displayed users id to the likedPeople array
@@ -53,6 +61,8 @@ export const useStore = create((set, get) => ({
     currentUserCopy.dislikedPeople.push(id);
     updateUser(currentUserCopy);
     set((state) => ({ currentUser: currentUserCopy }));
+    get().nextUser()
+
   },
   nextUser: () => {
     //show next user
