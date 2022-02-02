@@ -79,6 +79,16 @@ const Profile = () => {
             {currentUser.aboutMe}
           </p>
           <input
+            onBlur={(e) => {
+              updateUser(currentUser);
+              document.querySelector(
+                ".desc-profile-paragraph"
+                // @ts-ignore
+              ).style.display = "block";
+
+              // @ts-ignore
+              e.target.style.display = "none";
+            }}
             id="aboutMe-profile-desc"
             onKeyPress={(e) => {
               if (e.key === "Enter") {
@@ -118,6 +128,16 @@ const Profile = () => {
             {currentUser.likes}
           </p>
           <input
+            onBlur={(e) => {
+              updateUser(currentUser);
+              document.querySelector(
+                ".likes-profile-paragraph"
+                // @ts-ignore
+              ).style.display = "block";
+
+              // @ts-ignore
+              e.target.style.display = "none";
+            }}
             onKeyPress={(e) => {
               if (e.key === "Enter") {
                 updateUser(currentUser);
@@ -155,6 +175,16 @@ const Profile = () => {
             {currentUser.dislikes}
           </p>
           <input
+            onBlur={(e) => {
+              updateUser(currentUser);
+              document.querySelector(
+                ".dislikes-profile-paragraph"
+                // @ts-ignore
+              ).style.display = "block";
+
+              // @ts-ignore
+              e.target.style.display = "none";
+            }}
             onKeyPress={(e) => {
               if (e.key === "Enter") {
                 updateUser(currentUser);
