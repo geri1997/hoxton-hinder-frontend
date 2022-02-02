@@ -7,6 +7,7 @@ export const useStore = create((set, get) => ({
   wrongInfo: false,
   isMatch: false,
   allUsers: [],
+  conversations: [],
   toggleIsMatch: (value) => set((state) => ({ isMatch: value })),
   toggleUserAlreadyExists: (value) =>
     set((state) => ({ userAlreadyExists: value })),
@@ -44,14 +45,13 @@ export const useStore = create((set, get) => ({
   likeUser: (id) => {
     //add the displayed users id to the likedPeople array
     let currentUserCopy = JSON.parse(JSON.stringify(get().currentUser));
-    currentUserCopy.likedPeople.push(id);
+    currentUserCopy.likedPeople.unshift(id);
     updateUser(currentUserCopy);
     set((state) => ({ currentUser: currentUserCopy }));
   },
   updateUserOnState: (updatedUser) =>
     set((state) => ({ currentUser: updatedUser })),
-  updateAboutMe: (newUser) =>
-    set((state) => ({ currentUser:newUser })),
+  updateAboutMe: (newUser) => set((state) => ({ currentUser: newUser })),
   dislikeUser: (id) => {
     //add the displayed users id to the likedPeople array
     let currentUserCopy = JSON.parse(JSON.stringify(get().currentUser));
@@ -59,4 +59,6 @@ export const useStore = create((set, get) => ({
     updateUser(currentUserCopy);
     set((state) => ({ currentUser: currentUserCopy }));
   },
+  setConversations: (newConversations) =>
+    set((state) => ({ conversations: newConversations })),
 }));

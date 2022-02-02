@@ -1,0 +1,46 @@
+.convo-user-list {
+  display: grid;
+  grid-auto-flow: column;
+  list-style: none;
+  justify-content: start;
+  gap: 2rem;
+}
+.convo-user-list img {
+  border-radius: 50%;
+}
+li.single-user {
+  height: 80px;
+  width: 80px;
+  text-align: center;
+  cursor: pointer;
+  transition-duration: 0.5s;
+
+}
+li.single-user:hover {
+  transform: scale(0.8);
+}
+section.conversation-users {
+  border-bottom: 1px solid black;
+  height: 120px;
+  overflow-x: scroll;
+}
+
+section.conversation-users::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  border-radius: 40px;
+}
+/* section.conversation-users::-webkit-scrollbar-button {
+    background: #ccc
+} */
+/* section.conversation-users::-webkit-scrollbar-track-piece {
+    background: #888
+} */
+section.conversation-users::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #fc5696, #ff805d);
+  border-radius: 40px;
+}
+section.conversation-users::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  /* border-radius: 20px; */
+}

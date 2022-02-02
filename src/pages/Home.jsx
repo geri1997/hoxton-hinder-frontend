@@ -5,6 +5,7 @@ import "../assets/home.css";
 import { fetchUsers } from "../utils/api";
 import HomeBtn from "../Components/HomeBtn";
 import { capitalise } from "../utils/capitalise";
+import { shuffle } from "../utils/shuffleArr";
 
 const Home = () => {
   const currentUser = useStore((store) => store.currentUser);
@@ -21,18 +22,20 @@ const Home = () => {
     !currentUser && navigate("/");
   }, []);
   useEffect(() => {
-    
-      allUsers.length === 0 &&
+    allUsers.length === 0 &&
       currentUser &&
-      fetchUsers(currentUser.interestedIn).then((users) => setAllUsers(users));
+      fetchUsers(currentUser.interestedIn).then((users) => setAllUsers(shuffle(users)));
   }, [currentUser]);
 
-const usersToDisplay=allUsers.filter((user) => {
-  if (currentUser.likedPeople.includes(user.id)||currentUser.dislikedPeople.includes(user.id)) {
-    return false;
-  }
-  return true;
-})
+  const usersToDisplay = allUsers.filter((user) => {
+    if (
+      currentUser.likedPeople.includes(user.id) ||
+      currentUser.dislikedPeople.includes(user.id)
+    ) {
+      return false;
+    }
+    return true;
+  });
   const displayedUser = usersToDisplay[0];
   if (allUsers.length === 0) {
     return <h1>Loading...</h1>;
@@ -50,10 +53,9 @@ const usersToDisplay=allUsers.filter((user) => {
                 <div className="match-btns">
                   <button
                     onClick={(e) => {
-                      
                       toggleIsMatch(false);
                       navigate("/chat");
-                      likeUser(displayedUser.id)
+                      likeUser(displayedUser.id);
                       // nextUser();
                     }}
                     className="btn user-enter match"
@@ -123,11 +125,10 @@ const usersToDisplay=allUsers.filter((user) => {
         <HomeBtn
           onClick={(e) => {
             animateOnClick("heart");
-            
 
             if (displayedUser.likedPeople.includes(currentUser.id)) {
               toggleIsMatch(true);
-            }else{
+            } else {
               likeUser(displayedUser.id);
             }
           }}

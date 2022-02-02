@@ -1,4 +1,5 @@
-const apiUrl = "http://localhost:3000/users";
+const apiUrl = "http://localhost:4000/users";
+const conversationsUrl='http://localhost:4000/conversations'
 
 export function createUser(
   user,
@@ -61,4 +62,8 @@ export function updateUser(updatedUser) {
     },
     body: JSON.stringify(updatedUser),
   });
+}
+
+export function fetchConversations(id){
+  return fetch(conversationsUrl +`?userId=${id}`).then(resp=>resp.json())
 }
