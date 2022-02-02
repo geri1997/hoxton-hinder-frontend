@@ -50,7 +50,8 @@ export const useStore = create((set, get) => ({
   },
   updateUserOnState: (updatedUser) =>
     set((state) => ({ currentUser: updatedUser })),
-
+  updateAboutMe: (newUser) =>
+    set((state) => ({ currentUser:newUser })),
   dislikeUser: (id) => {
     //add the displayed users id to the likedPeople array
     let currentUserCopy = JSON.parse(JSON.stringify(get().currentUser));

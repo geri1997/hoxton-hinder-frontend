@@ -912,11 +912,13 @@
       "gender": "female",
       "interestedIn": "men",
       "photo": "https://images.unsplash.com/photo-1506782081254-09bcfd996fd6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8d29tZW58ZW58MHx8MHx8&w=1000&q=80",
-      "aboutMe": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+      "aboutMe": "Lorasem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
       "likes": "Candles and candle-making, All-you-can-eat shrimp",
       "dislikes": "Styrofoam, Breaking in new shoes",
       "likedPeople": [],
-      "dislikedPeople": [],
+      "dislikedPeople": [
+        1
+      ],
       "id": 52
     },
     {

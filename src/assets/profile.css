@@ -1,15 +1,25 @@
-.profile-info{
-    display: grid;
-    grid-template-rows: 160px 1fr;
+.profile-info {
+  display: grid;
+  grid-template-rows: 160px 1fr;
 }
-section.profile-photo{
-    width: 100px;
-    height: 160px;
-    display: grid;
-    justify-self: center;
-    text-align: center;
+section.profile-photo {
+  width: 100px;
+  height: 160px;
+  display: grid;
+  justify-self: center;
+  text-align: center;
 }
-.profile-photo img{
-    border-radius: 50%;
-height: 100px;
+.profile-photo img {
+  border-radius: 50%;
+  height: 100px;
 }
+
+#aboutMe-profile-desc {
+  display: none;
+}
+#likes-profile-desc {
+  display: none;
+}
+#dislikes-profile-desc {
+    display: none;
+  }
