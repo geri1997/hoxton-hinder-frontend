@@ -48,6 +48,8 @@ export const useStore = create((set, get) => ({
     updateUser(currentUserCopy);
     set((state) => ({ currentUser: currentUserCopy }));
   },
+  updateUserOnState: (updatedUser) =>
+    set((state) => ({ currentUser: updatedUser })),
 
   dislikeUser: (id) => {
     //add the displayed users id to the likedPeople array

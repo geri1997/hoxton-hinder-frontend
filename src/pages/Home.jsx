@@ -34,7 +34,6 @@ const usersToDisplay=allUsers.filter((user) => {
   return true;
 })
   const displayedUser = usersToDisplay[0];
-  console.log(displayedUser);
   if (allUsers.length === 0) {
     return <h1>Loading...</h1>;
   }
