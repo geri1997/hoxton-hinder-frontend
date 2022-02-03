@@ -1,5 +1,6 @@
 const apiUrl = "http://localhost:4000/users";
-const conversationsUrl='http://localhost:4000/conversations'
+const conversationsUrl = "http://localhost:4000/conversations";
+const messageUrl = "http://localhost:4000/messages";
 
 export function createUser(
   user,
@@ -64,6 +65,22 @@ export function updateUser(updatedUser) {
   });
 }
 
-export function fetchConversations(id){
-  return fetch(conversationsUrl +`?userId=${id}`).then(resp=>resp.json())
+export function fetchConversations(id) {
+  return fetch(conversationsUrl + `?userId=${id}`).then((resp) => resp.json());
+}
+
+export function fetchConversationMessages(id) {
+  return fetch(messageUrl + "?conversationId=" + id).then((resp) =>
+    resp.json()
+  );
+}
+
+export function addMessageOnServer(message) {
+  return fetch(messageUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(message),
+  });
 }

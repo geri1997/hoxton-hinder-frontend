@@ -66,12 +66,13 @@ section.users-description {
   width: 50px;
   padding: 0.7rem;
   position: relative;
+  transition-duration: 0.5s;
+
 }
 
 .hinder-btns:hover {
   transform: scale(1.2, 1.2);
   background: linear-gradient(45deg, #fd267883, #ff623670);
-  transition-duration: 0.5s;
 }
 
 .onclick-btn {

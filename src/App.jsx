@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import "./assets/App.css";
 import Chat from "./pages/Chat";
+import Conversation from "./pages/Conversation";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
@@ -24,6 +25,8 @@ function App() {
       <Route path={"/home"} element={<Home />} />
       <Route path={"/profile"} element={<Profile />} />
       <Route path={"/chat"} element={<Chat />} />
+      <Route path={"/chat/:username"} element={<Conversation/>} />
+
     </Routes>
   );
 }

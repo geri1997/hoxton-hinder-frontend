@@ -1,0 +1,18 @@
+.chat-user-info{
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.single-chat{
+    display: grid;
+    grid-template-rows: 60px 1fr;
+}
+
+.chat-messages{
+    display: grid;
+    grid-template-rows: 1fr 40px;
+}
+.chat-messages input{
+    width: 100%;
+    height: 100%;
+}

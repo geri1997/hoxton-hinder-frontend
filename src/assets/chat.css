@@ -5,8 +5,15 @@
   justify-content: start;
   gap: 2rem;
 }
-.convo-user-list img {
+.convo-user-list img,
+li.single-convo img {
   border-radius: 50%;
+  /* height: 60px; */
+}
+li.single-convo:hover {
+background-color: rgb(223, 223, 245);}
+li.single-convo img{
+  height: 80px;
 }
 li.single-user {
   height: 80px;
@@ -14,7 +21,6 @@ li.single-user {
   text-align: center;
   cursor: pointer;
   transition-duration: 0.5s;
-
 }
 li.single-user:hover {
   transform: scale(0.8);
@@ -43,4 +49,57 @@ section.conversation-users::-webkit-scrollbar-thumb {
 section.conversation-users::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
   /* border-radius: 20px; */
+}
+
+.conversations-list {
+  list-style: none;
+}
+li.single-convo {
+  height: 100px;
+  text-align: center;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border-bottom: solid 1px black;
+  padding: 0.5rem 1rem;
+  gap: 1rem;
+  transition-duration: 0.5s;
+  
+}
+li.single-convo span {
+  text-align: start;
+}
+.conversation-tab {
+  display: grid;
+  align-content: flex-start;
+  gap: 1rem;
+}
+section.conversations {
+  overflow-y: scroll;
+  height: 380px;
+}
+.conversations-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+section.conversations::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  border-radius: 40px;
+}
+
+section.conversations::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #fc5696, #ff805d);
+  border-radius: 40px;
+}
+section.conversations::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  /* border-radius: 20px; */
+}
+
+section a{
+  text-decoration: none;
+  color: black;
 }
