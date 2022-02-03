@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import HomeBtn from "../Components/HomeBtn";
 import { useStore } from "../Store/store";
@@ -9,6 +9,7 @@ const Conversation = () => {
   const currentUser = useStore((store) => store.currentUser);
   const conversations = useStore((store) => store.conversations);
   const allUsers = useStore((store) => store.allUsers);
+//   const [currentConversationMessages, setCurrentConversationMessages] = useState([]);
   const currentConversationMessages = useStore(
     (store) => store.currentConversationMessages
   );
@@ -23,7 +24,8 @@ const Conversation = () => {
   }, []);
 
   //find the conversation with the current user and the param user
-  const currentConversation = conversations.find((convo) => {
+  let currentConversation = null
+  currentConversation= conversations.find((convo) => {
     if (
       allUsers.find((user) => {
         return user.username === params.username;
@@ -36,6 +38,7 @@ const Conversation = () => {
     }
     return false;
   });
+  console.log(currentConversation)
   let userTalkingTo=null
   if(currentConversation){userTalkingTo = allUsers.find(
     (user) =>
@@ -50,7 +53,7 @@ const Conversation = () => {
       fetchConversationMessages(currentConversation.id).then((serverMessages) =>
         setCurrentConversationMessages(serverMessages)
       );
-  }, []);
+  }, [currentConversation]);
 
   if (!currentUser) return <h2>Loading...</h2>;
 
