@@ -14,6 +14,7 @@ const Chat = () => {
   const conversations = useStore((store) => store.conversations);
   const setConcersations = useStore((store) => store.setConversations);
   const allUsers = useStore((store) => store.allUsers);
+  
 
   const matchedUsers = allUsers.filter(
     (user) =>
@@ -42,6 +43,7 @@ const Chat = () => {
       <section className="conversation-tab">
         <section className="conversation-users">
           <ul className="convo-user-list">
+            {console.log(matchedUsers)}
             {matchedUsers.reverse().map((user) => (
               <Link
                 onClick={(e) => {
@@ -90,7 +92,7 @@ const Chat = () => {
                   : matchedUsers.find(
                       (user) => user.id === conversation.userId
                     );
-              return (
+              if(matchedUser)return (
                 <Link
                   key={"convo" + conversation.id}
                   to={"/chat/" + matchedUser.username}

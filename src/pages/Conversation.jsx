@@ -58,28 +58,38 @@ const Conversation = () => {
           : currentConversation.userId)
     );
   }
-  useEffect(() => {
-    //fetch the messages in that conversation
-    let intervalId;
-    if (currentUser && currentConversation) {
-      //fetch as soon as page loads
-      fetchConversationMessages(currentConversation.id).then(
+
+useEffect(() => {
+    currentConversation&&fetchConversationMessages(currentConversation.id).then(
         (serverMessages) => {
           setCurrentConversationMessages(serverMessages);
           const messagesUl = document.querySelector(".list-of-messages");
           messagesUl.scrollTop = messagesUl.scrollHeight;
         }
       );
+}, [currentConversation]);
+
+
+  useEffect(() => {
+    //fetch the messages in that conversation
+    let intervalId;
+    if (currentUser && currentConversation) {
+  
+      
       //fetch messages periodically and also scroll to bottom every time
       intervalId = setInterval((e) => {
         fetchConversationMessages(currentConversation.id).then(
           (serverMessages) => {
-            //only scroll if new Messages found
-            if (currentConversationMessages.length !== serverMessages.length) {
-              const messagesUl = document.querySelector(".list-of-messages");
-              messagesUl.scrollTop = messagesUl.scrollHeight;
-            }
+            console.log(
+              "curretnConversations" + currentConversationMessages.length
+            );
+            console.log("serverConversations" + serverMessages.length);
+            
             setCurrentConversationMessages(serverMessages);
+            if (currentConversationMessages.length !== serverMessages.length) {
+                const messagesUl = document.querySelector(".list-of-messages");
+                messagesUl.scrollTop = messagesUl.scrollHeight;
+              }
           }
         );
 
@@ -87,7 +97,7 @@ const Conversation = () => {
       }, 2000);
     }
     return () => clearInterval(intervalId);
-  }, [currentConversation]);
+  }, [currentConversation,currentConversationMessages]);
 
   if (!currentUser) return <h2>Loading...</h2>;
 
