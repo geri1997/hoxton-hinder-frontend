@@ -84,3 +84,13 @@ export function addMessageOnServer(message) {
     body: JSON.stringify(message),
   });
 }
+
+export function createConversationOnServer(conversation) {
+  return fetch(conversationsUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(conversation),
+  }).then(resp=>resp.json())
+}

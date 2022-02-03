@@ -36,16 +36,17 @@ const Conversation = () => {
     }
     return false;
   });
-  const userTalkingTo = allUsers.find(
+  let userTalkingTo=null
+  if(currentConversation){userTalkingTo = allUsers.find(
     (user) =>
       user.id ===
       (currentConversation.userId === currentUser.id
         ? currentConversation.participantId
         : currentConversation.userId)
-  );
+  );}
   useEffect(() => {
     //fetch the messages in that conversation
-    if (currentUser)
+    if (currentUser&&currentConversation)
       fetchConversationMessages(currentConversation.id).then((serverMessages) =>
         setCurrentConversationMessages(serverMessages)
       );
@@ -57,15 +58,24 @@ const Conversation = () => {
     <main className="home">
       <h1 className="home-h1">hinder</h1>
       <section className="single-chat">
-        <section className="chat-user-info">
+        {userTalkingTo&&<section className="chat-user-info">
           <button onClick={(e) => navigate("/chat")}>◀</button>
           <img src={userTalkingTo.photo} alt="" />
           <span>{userTalkingTo.username}</span>
-        </section>
+        </section>}
         <section className="chat-messages">
-          <ul>
-            {currentConversationMessages.map((message) => (
-              <li key={message.id}>{message.messageText}</li>
+          <ul className="list-of-messages">
+            {currentConversationMessages.length!==0&&currentConversationMessages.map((message) => (
+              <li
+                className={
+                  message.userId === currentUser.id
+                    ? "current-user-message"
+                    : ""
+                }
+                key={message.id}
+              >
+                {message.messageText}
+              </li>
             ))}
           </ul>
           <form
@@ -73,7 +83,7 @@ const Conversation = () => {
               e.preventDefault();
               const message = {
                 conversationId: currentConversation.id,
-                userid: currentUser.id,
+                userId: currentUser.id,
                 // @ts-ignore
                 messageText: e.target.msg.value,
               };
@@ -85,6 +95,8 @@ const Conversation = () => {
                     serverMessage,
                   ]);
                 });
+              // @ts-ignore
+              e.target.reset();
             }}
           >
             <input name="msg" type="text" />

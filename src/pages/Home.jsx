@@ -27,6 +27,8 @@ const Home = () => {
       fetchUsers(currentUser.interestedIn).then((users) => setAllUsers(shuffle(users)));
   }, [currentUser]);
 
+  
+
   const usersToDisplay = allUsers.filter((user) => {
     if (
       currentUser.likedPeople.includes(user.id) ||
@@ -71,7 +73,7 @@ const Home = () => {
                     }}
                     className="btn user-enter match"
                   >
-                    Keep Prowling
+                    Keep Looking
                   </button>
                 </div>
               </div>

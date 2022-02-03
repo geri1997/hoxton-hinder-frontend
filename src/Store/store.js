@@ -9,6 +9,7 @@ export const useStore = create((set, get) => ({
   allUsers: [],
   conversations: [],
   currentConversationMessages: [],
+  userMessages: [],
   toggleIsMatch: (value) => set((state) => ({ isMatch: value })),
   toggleUserAlreadyExists: (value) =>
     set((state) => ({ userAlreadyExists: value })),
@@ -64,4 +65,5 @@ export const useStore = create((set, get) => ({
     set((state) => ({ conversations: newConversations })),
   setCurrentConversationMessages: (messages) =>
     set((state) => ({ currentConversationMessages: messages })),
+  setUserMessages: (messages) => set((state) => ({ userMessages: messages })),
 }));

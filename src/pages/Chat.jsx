@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HomeBtn from "../Components/HomeBtn";
 import { useStore } from "../Store/store";
-import { fetchConversations } from "../utils/api";
+import {
+  createConversationOnServer,
+  fetchConversationMessages,
+  fetchConversations,
+} from "../utils/api";
 import "../assets/chat.css";
 
 const Chat = () => {
@@ -11,13 +15,11 @@ const Chat = () => {
   const setConcersations = useStore((store) => store.setConversations);
   const allUsers = useStore((store) => store.allUsers);
 
-  const matchedUsers = allUsers
-    .filter(
-      (user) =>
-        user.likedPeople.includes(currentUser.id) &&
-        currentUser.likedPeople.includes(user.id)
-    )
-    .reverse();
+  const matchedUsers = allUsers.filter(
+    (user) =>
+      user.likedPeople.includes(currentUser.id) &&
+      currentUser.likedPeople.includes(user.id)
+  );
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -26,12 +28,11 @@ const Chat = () => {
 
   useEffect(() => {
     if (currentUser)
-      fetchConversations(currentUser.id).then((serverConversations) =>
-        setConcersations(serverConversations)
-      );
+      fetchConversations(currentUser.id).then((serverConversations) => {
+        let con = serverConversations.reverse();
+        setConcersations(con);
+      });
   }, []);
-
-
 
   if (!currentUser) return <h2>Loading...</h2>;
 
@@ -41,8 +42,35 @@ const Chat = () => {
       <section className="conversation-tab">
         <section className="conversation-users">
           <ul className="convo-user-list">
-            {matchedUsers.map((user) => (
-              <Link key={user.id} to={"/chat/" + user.username}>
+            {matchedUsers.reverse().map((user) => (
+              <Link
+                onClick={(e) => {
+                  if (
+                    !conversations.find((convo) => {
+                      if (
+                        convo.userId === user.id ||
+                        convo.participantId === user.id
+                      ) {
+                        return true;
+                      } else {
+                        return false;
+                      }
+                    })
+                  ) {
+                    const newConversation = {
+                      userId: currentUser.id,
+                      participantId: user.id,
+                    };
+                    createConversationOnServer(newConversation)
+                      .then((conversation) =>
+                        setConcersations([conversation,...conversations])
+                      )
+                      // .then((a) => navigate("/chat/" + user.username));
+                  }
+                }}
+                key={user.id}
+                to={"/chat/" + user.username}
+              >
                 <li className="single-user">
                   <img src={user.photo} alt="" />
                   <span style={{ fontWeight: "600" }}>{user.username}</span>
@@ -62,17 +90,18 @@ const Chat = () => {
                   : matchedUsers.find(
                       (user) => user.id === conversation.userId
                     );
-
               return (
                 <Link
-                  key={'convo' + conversation.id}
+                  key={"convo" + conversation.id}
                   to={"/chat/" + matchedUser.username}
                 >
                   <li className="single-convo">
                     <img src={matchedUser.photo} alt="" />
-                    <span style={{ fontWeight: "900", fontSize: "1.5rem" }}>
-                      {matchedUser.username}
-                    </span>
+                    <section className="name-last-ms">
+                      <span style={{ fontWeight: "900", fontSize: "1.5rem" }}>
+                        {matchedUser.username}
+                      </span>
+                    </section>
                   </li>
                 </Link>
               );
