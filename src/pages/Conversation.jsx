@@ -9,13 +9,14 @@ const Conversation = () => {
   const currentUser = useStore((store) => store.currentUser);
   const conversations = useStore((store) => store.conversations);
   const allUsers = useStore((store) => store.allUsers);
-//   const [currentConversationMessages, setCurrentConversationMessages] = useState([]);
-  const currentConversationMessages = useStore(
-    (store) => store.currentConversationMessages
-  );
-  const setCurrentConversationMessages = useStore(
-    (store) => store.setCurrentConversationMessages
-  );
+  const [currentConversationMessages, setCurrentConversationMessages] = useState([]);
+//   const currentConversationMessages = useStore(
+//     (store) => store.currentConversationMessages
+//   );
+//   const setCurrentConversationMessages = useStore(
+//     (store) => store.setCurrentConversationMessages
+//   );
+
 
   const navigate = useNavigate();
   const params = useParams();
