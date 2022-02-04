@@ -103,3 +103,14 @@ section a{
   text-decoration: none;
   color: black;
 }
+
+/* .swipe-right{
+  transform: translate(200px) rotate(0.1turn);
+  opacity: 0.5;
+  transition-duration: 1.5s;
+}
+.swipe-left{
+  transform: translate(-200px) rotate(-0.1turn);
+  opacity: 0.5;
+  transition-duration: 1.5s;
+} */

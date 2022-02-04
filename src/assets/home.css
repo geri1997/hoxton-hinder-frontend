@@ -67,7 +67,6 @@ section.users-description {
   padding: 0.7rem;
   position: relative;
   transition-duration: 0.5s;
-
 }
 
 .hinder-btns:hover {
@@ -96,7 +95,9 @@ section.users-description {
   border-radius: 20px;
   text-align: center;
 }
-.match-btns{
+
+
+.match-btns {
   display: grid;
 }
 .btn.user-enter.match {

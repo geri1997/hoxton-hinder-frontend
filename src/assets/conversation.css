@@ -1,6 +1,9 @@
 .chat-user-info {
   display: grid;
-  grid-auto-flow: column;
+  background-color: rgb(179, 179, 224);
+  grid-template-columns: 50px 60px 1fr;
+    gap: 1rem;
+    place-items: center;
 }
 
 .single-chat {
@@ -54,4 +57,19 @@
 .send-msg{
     display: grid;
     grid-template-columns: 1fr 40px;
+}
+
+.chat-user-info button, .chat-user-info img, .chat-user-info span{
+    height: 50px;
+    width: 50px;
+  
+}
+
+.chat-user-info img{
+    border-radius: 50%;
+}
+
+.chat-user-info span{
+align-items: center;
+display: grid;
 }
