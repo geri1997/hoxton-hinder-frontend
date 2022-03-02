@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=Short+Stack&display=swap");
 main.not-logged-in {
   display: grid;
-width: 312px;
+min-width: 312px;
   border-radius: 40px;
   background: rgb(255, 255, 255);
   place-items: center;
