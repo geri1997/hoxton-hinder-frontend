@@ -30,7 +30,7 @@ main.sign-up.not-logged-in {
 #root {
   display: grid;
   place-content: center;
-  height: 100vh;
+  min-height: 100vh;
 
   background: linear-gradient(45deg, #fd267a, #ff6036);
 }
