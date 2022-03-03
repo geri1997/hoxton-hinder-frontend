@@ -18,7 +18,7 @@ main.sign-up.not-logged-in {
   grid-template-rows: auto;
 }
 
-@keyframes fadeInAnimation {
+@-webkit-keyframes fadeInAnimation {
   0% {
     opacity: 0;
   }
