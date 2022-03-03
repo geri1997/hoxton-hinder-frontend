@@ -55,7 +55,7 @@ div.women {
 }
 div.select {
   position: absolute;
-  width: 124px;
+  width: 50%;
   height: 101%;
   border-radius: 20px;
   background: linear-gradient(45deg, #fc5696, #ff805d);
