@@ -30,3 +30,9 @@ section.users::-webkit-scrollbar-track-piece {
 section.users::-webkit-scrollbar-thumb {
     background: #eee
 }
+
+@media screen and (max-height: 830px) {
+    main.sign-up, main.login{
+        margin: 2rem 0rem;
+    }
+  }
