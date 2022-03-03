@@ -11,11 +11,11 @@ button.btn {
   outline: none;
   font-family: "Gowun Dodum", sans-serif;
 }
-button.btn:hover{
+/* button.btn:hover{
   background: linear-gradient(45deg, #fc5696, #ff805d);
    color: white;
    transition: all 0.7s ease;
-}
+} */
 button.user-enter {
   background-color: white;
   background-image: -webkit-linear-gradient(45deg, #fd267a, #ff6036);
