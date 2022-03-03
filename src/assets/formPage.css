@@ -44,6 +44,7 @@ input.shake {
   border: 1px solid black;
   border-radius: 20px;
   position: relative;
+  width: 248px;
 }
 div.men,
 div.women {
