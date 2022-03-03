@@ -21,5 +21,11 @@ button.user-enter {
   background-image: -webkit-linear-gradient(45deg, #fd267a, #ff6036);
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-color: transparent;
+  color: transparent;
+}
+
+@media screen and (max-width: 600px) {
+  button.user-enter {
+    color: black;
+  }
 }
