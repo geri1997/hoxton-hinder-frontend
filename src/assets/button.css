@@ -16,10 +16,10 @@ button.btn:hover{
    color: white;
    transition: all 0.7s ease;
 }
-button.user-enter {
+/* button.user-enter {
   background-color: white;
   background-image: -webkit-linear-gradient(45deg, #fd267a, #ff6036);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
+} */
