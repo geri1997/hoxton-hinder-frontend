@@ -14,7 +14,7 @@ form.enter input {
   border-radius: 30px;
   text-indent: 1rem;
   font-size: 1rem;
-  width: 100%;
+  min-width: 100%;
 }
 textarea {
   text-indent: 1rem;
